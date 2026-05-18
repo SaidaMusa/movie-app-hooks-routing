@@ -1,0 +1,40 @@
+.panel {
+  padding: 20px;
+  color: #fff;
+}
+
+.image {
+  width: 100%;
+  height: 260px;
+
+  object-fit: cover;
+
+  border-radius: 12px;
+
+  margin-bottom: 16px;
+
+  background: #222;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 700;
+
+  margin-bottom: 12px;
+}
+
+.text {
+  font-size: 15px;
+  color: #b0b0b0;
+
+  line-height: 1.7;
+
+  margin-bottom: 14px;
+}
+
+.rating {
+  font-size: 16px;
+  font-weight: 700;
+
+  color: #ffd54f;
+}

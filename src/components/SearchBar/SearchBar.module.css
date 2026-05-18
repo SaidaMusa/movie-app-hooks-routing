@@ -1,0 +1,31 @@
+.search {
+  width: 100%;
+  padding: 12px 14px;
+
+  background: #111; 
+  color: #fff;
+
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+
+  outline: none;
+
+  font-size: 14px;
+
+  transition: all 0.25s ease;
+
+  margin-bottom: 15px;
+}
+
+.search::placeholder {
+  color: #777;
+}
+
+.search:focus {
+  border-color: #e53935;
+  box-shadow: 0 0 0 3px rgba(229, 57, 53, 0.25);
+}
+
+.search:hover {
+  border-color: #444;
+}

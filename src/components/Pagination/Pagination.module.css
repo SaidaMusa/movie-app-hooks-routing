@@ -1,0 +1,45 @@
+.wrapper {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.button {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  background: #e53935; 
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.button:hover {
+  background: #c62828; 
+  transform: translateY(-2px);
+}
+
+.button:active {
+  transform: scale(0.95);
+}
+
+.button:disabled {
+  background: #f2a7a5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.page {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  padding: 0 10px;
+}
+
+
+span{
+  color: aliceblue;
+}
