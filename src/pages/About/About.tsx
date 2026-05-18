@@ -14,7 +14,7 @@ function About() {
 
       <p className={styles.text}>
         Created by Saida
-        Musaxonova
+        Musakhonova
       </p>
 
       <a
