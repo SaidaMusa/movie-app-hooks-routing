@@ -8,7 +8,9 @@ describe("getMovies", () => {
   });
 
   test("success case", async () => {
+
     (fetch as jest.Mock).mockResolvedValueOnce({
+      
       ok: true,
       json: async () => ({ results: [{ id: 1, title: "Movie" }] }),
     });

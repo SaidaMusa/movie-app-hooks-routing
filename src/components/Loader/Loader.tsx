@@ -4,9 +4,11 @@ function Loader() {
   return (
     <div className={styles.wrapper} data-testid="loader">
       <div className={styles.dots}>
+        
         <span />
         <span />
         <span />
+
       </div>
     </div>
   );
