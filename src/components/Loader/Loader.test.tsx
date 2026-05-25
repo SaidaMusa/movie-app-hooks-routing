@@ -1,15 +1,25 @@
-import { render, screen } from "@testing-library/react";
+import {
+  render,
+  screen,
+} from "@testing-library/react";
+
 import Loader from "./Loader";
 
-test("renders loader wrapper", () => {
-  render(<Loader />);
+describe("Loader", () => {
+  test("renders loader", () => {
+    render(<Loader />);
 
-  expect(document.querySelector(".wrapper")).toBeInTheDocument();
-});
+    expect(
+      screen.getByTestId("loader")
+    ).toBeInTheDocument();
+  });
 
-test("renders 3 spans", () => {
-  render(<Loader />);
+  test("renders 3 dots", () => {
+    render(<Loader />);
 
-  const spans = document.querySelectorAll("span");
-  expect(spans.length).toBe(3);
+    const spans =
+      document.querySelectorAll("span");
+
+    expect(spans).toHaveLength(3);
+  });
 });

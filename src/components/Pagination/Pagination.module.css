@@ -1,45 +1,75 @@
 .wrapper {
   display: flex;
-  gap: 10px;
-  margin-top: 20px;
+
   align-items: center;
+
   justify-content: center;
+
+  gap: 14px;
+
+  margin-top: 30px;
+
+  padding-bottom: 20px;
 }
 
 .button {
-  padding: 8px 14px;
-  border: none;
-  border-radius: 6px;
-  background: #e53935; 
+  padding: 10px 18px;
+
+  border-radius: 10px;
+
+  background: #e53935;
+
   color: white;
-  font-weight: 500;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  border: none;
+
   cursor: pointer;
-  transition: all 0.2s ease;
+
+  transition: 0.25s ease;
 }
 
 .button:hover {
-  background: #c62828; 
+  background: #c62828;
+
   transform: translateY(-2px);
+
+  box-shadow: 0 6px 14px
+    rgba(229, 57, 53, 0.25);
 }
 
 .button:active {
-  transform: scale(0.95);
+  transform: scale(0.96);
 }
 
 .button:disabled {
   background: #f2a7a5;
+
   cursor: not-allowed;
+
+  opacity: 0.7;
+
   transform: none;
+
+  box-shadow: none;
 }
 
 .page {
-  font-size: 14px;
-  font-weight: 600;
-  color: #333;
-  padding: 0 10px;
-}
+  font-size: 15px;
 
+  font-weight: 700;
 
-span{
-  color: aliceblue;
+  color: var(--text);
+
+  background: var(--card);
+
+  border: 1px solid
+    var(--border);
+
+  padding: 10px 16px;
+
+  border-radius: 10px;
 }

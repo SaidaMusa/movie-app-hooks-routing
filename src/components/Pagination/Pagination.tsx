@@ -15,8 +15,9 @@ function Pagination({ currentPage, onPageChange }: Props) {
       >
         Prev
       </button>
-
-      <span>Page {currentPage}</span>
+<span className={styles.page}>
+  Page {currentPage}
+</span>
 
       <button
         className={styles.button}

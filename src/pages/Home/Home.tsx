@@ -1,12 +1,25 @@
-import { useSearchParams } from "react-router-dom";
+import {
+  Outlet,
+  useLocation,
+  useNavigate,
+  useSearchParams,
+} from "react-router-dom";
+
 import useMovies from "../../hooks/useMovies";
+
 import useLocalStorage from "../../hooks/useLocalStorage";
+
 import MovieList from "../../components/MovieList/MovieList";
+
 import Pagination from "../../components/Pagination/Pagination";
+
 import SearchBar from "../../components/SearchBar/SearchBar";
+
 import Loader from "../../components/Loader/Loader";
+
 import ThrowErrorButton from "../../components/ThrowErrorButton/ThrowErrorButton";
-import Details from "../Details/Details";
+
+import Flyout from "../../components/Flyout/Flyout";
 
 import styles from "./Home.module.css";
 
@@ -14,16 +27,45 @@ function Home() {
   const [searchParams, setSearchParams] =
     useSearchParams();
 
-  const [recentSearches, setRecentSearches] =
-    useLocalStorage<string[]>("recentSearches", []);
+  const navigate =
+    useNavigate();
 
-  const page = Number(searchParams.get("page") || 1);
-  const search = searchParams.get("search") || "";
-  const detailsId = searchParams.get("details");
+  const location =
+    useLocation();
 
-  const { movies, loading } = useMovies(page, search);
+  const [
+    recentSearches,
+    setRecentSearches,
+  ] = useLocalStorage<string[]>(
+    "recentSearches",
+    []
+  );
 
-  function handleSearch(value: string) {
+  const page = Number(
+    searchParams.get("page") || 1
+  );
+
+  const search =
+    searchParams.get("search") || "";
+
+  const {
+    movies,
+    loading,
+    error,
+    refetch,
+    isFetching,
+  } = useMovies(
+    page,
+    search
+  );
+
+  async function handleRefresh() {
+    await refetch();
+  }
+
+  function handleSearch(
+    value: string
+  ) {
     setSearchParams({
       page: "1",
       search: value,
@@ -32,76 +74,174 @@ function Home() {
     if (value.trim()) {
       const updated = [
         value,
-        ...recentSearches.filter((item) => item !== value),
-      ].slice(0, 5); 
+        ...recentSearches.filter(
+          (item) =>
+            item !== value
+        ),
+      ].slice(0, 5);
 
-      setRecentSearches(updated);
+      setRecentSearches(
+        updated
+      );
     }
   }
 
-  function handlePageChange(newPage: number) {
-    const params: Record<string, string> = {
+  function handlePageChange(
+    newPage: number
+  ) {
+    const params: Record<
+      string,
+      string
+    > = {
       page: String(newPage),
     };
 
-    if (search) params.search = search;
-    if (detailsId) params.details = detailsId;
+    if (search) {
+      params.search =
+        search;
+    }
 
-    setSearchParams(params);
+    setSearchParams(
+      params
+    );
   }
 
   function closeDetails() {
-    const params: Record<string, string> = {
-      page: String(page),
-    };
-
-    if (search) params.search = search;
-
-    setSearchParams(params);
+    navigate(
+      `/?page=${page}&search=${search}`
+    );
   }
 
-  const isDetailsOpen = Boolean(detailsId);
+  const isDetailsOpen =
+    location.pathname.includes(
+      "/movie/"
+    );
 
   return (
-    <div className={styles.container}>
-      <div className={styles.left}>
-        <SearchBar value={search} onChange={handleSearch} />
+    <div
+      className={
+        styles.container
+      }
+    >
+      <div
+        className={
+          styles.left
+        }
+      >
+        <SearchBar
+          value={search}
+          onChange={
+            handleSearch
+          }
+        />
+
+        <div
+          className={
+            styles.topBar
+          }
+        >
+          <button
+            className={
+              styles.refreshBtn
+            }
+            onClick={
+              handleRefresh
+            }
+          >
+            ↻ Refresh
+          </button>
+
+          {isFetching && (
+            <span
+              className={
+                styles.refreshing
+              }
+            >
+              Refreshing...
+            </span>
+          )}
+
+          <Flyout />
+        </div>
 
         <ThrowErrorButton />
 
-        {recentSearches.length > 0 && (
-          <div className={styles.recent}>
-            <div>
-              {recentSearches.map((item, i) => (
-                <button
-                  key={i}
-                  onClick={() =>
-                    setSearchParams({
-                      page: "1",
-                      search: item,
-                    })
-                  }
-                >
-                  {item}
-                </button>
-              ))}
+        {recentSearches.length >
+          0 && (
+          <div
+            className={
+              styles.recent
+            }
+          >
+            <div
+              className={
+                styles.recentButtons
+              }
+            >
+              {recentSearches.map(
+                (item) => (
+                  <button
+                    key={item}
+                    className={
+                      styles.recentBtn
+                    }
+                    onClick={() =>
+                      setSearchParams(
+                        {
+                          page: "1",
+                          search:
+                            item,
+                        }
+                      )
+                    }
+                  >
+                    {item}
+                  </button>
+                )
+              )}
             </div>
+          </div>
+        )}
+
+        {error && (
+          <div
+            className={
+              styles.error
+            }
+          >
+            Failed to load movies.
+            Please try again.
           </div>
         )}
 
         {loading ? (
           <Loader />
-        ) : movies.length === 0 ? (
-          <div className={styles.empty}>
-            <h3>No movies found...</h3>
+        ) : movies.length ===
+          0 ? (
+          <div
+            className={
+              styles.empty
+            }
+          >
+            <h3>
+              No movies found...
+            </h3>
           </div>
         ) : (
           <>
-            <MovieList movies={movies} />
+            <MovieList
+              movies={
+                movies
+              }
+            />
 
             <Pagination
-              currentPage={page}
-              onPageChange={handlePageChange}
+              currentPage={
+                page
+              }
+              onPageChange={
+                handlePageChange
+              }
             />
           </>
         )}
@@ -109,19 +249,27 @@ function Home() {
 
       <div
         className={`${styles.right} ${
-          !isDetailsOpen ? styles.hidden : ""
+          !isDetailsOpen
+            ? styles.hidden
+            : ""
         }`}
       >
         {isDetailsOpen && (
-          <button
-            className={styles.closeBtn}
-            onClick={closeDetails}
-          >
-            ✖ Close
-          </button>
-        )}
+          <>
+            <button
+              className={
+                styles.closeBtn
+              }
+              onClick={
+                closeDetails
+              }
+            >
+              ✖ Close
+            </button>
 
-        {isDetailsOpen && <Details />}
+            <Outlet />
+          </>
+        )}
       </div>
     </div>
   );

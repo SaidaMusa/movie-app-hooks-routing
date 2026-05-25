@@ -19,7 +19,7 @@ function About() {
 
       <a
         className={styles.link}
-        href="https://rs.school/react/"
+        href="https://rs.school/courses/reactjs"
         target="_blank"
         rel="noreferrer"
       >

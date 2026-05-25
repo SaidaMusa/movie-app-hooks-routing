@@ -11,5 +11,5 @@ export interface MovieDetails {
   poster_path: string;
   overview: string;
   vote_average: number;
-    backdrop_path: string; 
+  backdrop_path: string;
 }
