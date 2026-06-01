@@ -1,22 +1,58 @@
-import { Routes, Route } from "react-router-dom";
-import Home from "../pages/Home/Home";
-import About from "../pages/About/About";
-import NotFound from "../pages/NotFound";
+import {
+  Routes,
+  Route,
+} from "react-router-dom";
+
 import MainLayout from "../layouts/MainLayout";
+
+import Home from "../pages/Home/Home";
+
+import About from "../pages/About/About";
+
 import Details from "../pages/Details/Details";
 
-export default function AppRoutes() {
+import NotFound from "../pages/NotFound/NotFound";
+
+function AppRoutes() {
   return (
-    <Routes>
-      <Route element={<MainLayout />}>
-        <Route path="/" element={<Home />}>
-          <Route path="details" element={<Details />} />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <MainLayout />
+          }
+        >
+          <Route
+            index
+            element={<Home />}
+          />
+
+          <Route
+            path="movie/:id"
+            element={<Home />}
+          >
+            <Route
+              index
+              element={
+                <Details />
+              }
+            />
+          </Route>
+
+          <Route
+            path="about"
+            element={<About />}
+          />
+
+          <Route
+            path="*"
+            element={
+              <NotFound />
+            }
+          />
         </Route>
-
-        <Route path="/about" element={<About />} />
-      </Route>
-
-      <Route path="*" element={<NotFound />} />
-    </Routes>
+      </Routes>
   );
 }
+
+export default AppRoutes;

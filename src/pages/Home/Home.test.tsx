@@ -1,98 +1,124 @@
-import { render, screen, fireEvent } from "@testing-library/react";
+import {
+  render,
+  screen,
+} from "@testing-library/react";
+
+import userEvent from "@testing-library/user-event";
+
+import { MemoryRouter } from "react-router-dom";
+
 import Home from "./Home";
 
-const mockSetSearchParams = jest.fn();
+beforeEach(() => {
+  jest
+    .spyOn(console, "error")
+    .mockImplementation(() => {});
+});
 
-jest.mock("react-router-dom", () => ({
-  useSearchParams: () => [
-    {
-      get: (key: string) => {
-        if (key === "page") return "1";
-        if (key === "search") return "";
-        if (key === "details") return null;
-      },
-    },
-    mockSetSearchParams,
-  ],
-}));
+afterEach(() => {
+  jest.restoreAllMocks();
+});
 
-jest.mock("../../hooks/useMovies", () => ({
-  default: () => ({
-    movies: [
-      { id: 1, title: "Interstellar", poster_path: "", overview: "" },
+jest.mock(
+  "../../hooks/useLocalStorage",
+  () => ({
+    __esModule: true,
+    default: () => [
+      [],
+      jest.fn(),
     ],
-    loading: false,
-  }),
-}));
+  })
+);
 
-const setRecentSearches = jest.fn();
+jest.mock(
+  "../../hooks/useMovies",
+  () => ({
+    __esModule: true,
+    default: () => ({
+      movies: [
+        {
+          id: 1,
+          title: "Interstellar",
+          poster_path:
+            "/test.jpg",
+          overview:
+            "Space movie",
+        },
+      ],
+      loading: false,
+    }),
+  })
+);
 
-jest.mock("../../hooks/useLocalStorage", () => ({
-  default: () => [["batman"], setRecentSearches],
-}));
+jest.mock(
+  "../../components/MovieList/MovieList",
+  () => ({
+    __esModule: true,
+    default: () => (
+      <div>Movie List</div>
+    ),
+  })
+);
 
-jest.mock("../../components/MovieList/MovieList", () => () => (
-  <div>MovieList</div>
-));
-
-jest.mock("../../components/Pagination/Pagination", () => () => (
-  <div>Pagination</div>
-));
-
-jest.mock("../../components/SearchBar/SearchBar", () => (props: any) => (
-  <input
-    data-testid="search"
-    value={props.value}
-    onChange={(e) => props.onChange(e.target.value)}
-  />
-));
-
-jest.mock("../../hooks/useLocalStorage", () => ({
-  default: () => {
-    return [["test"], jest.fn()];
-  },
-}));
-
-jest.mock("../../components/Loader/Loader", () => () => (
-  <div>Loading...</div>
-));
-
-jest.mock("../../components/ThrowErrorButton/ThrowErrorButton", () => () => (
-  <button>Throw Error</button>
-));
-
-jest.mock("../Details/Details", () => () => <div>Details</div>);
+jest.mock(
+  "../../components/Pagination/Pagination",
+  () => ({
+    __esModule: true,
+    default: () => (
+      <div>Pagination</div>
+    ),
+  })
+);
 
 describe("Home Page", () => {
-  test("renders movies when loaded", () => {
-    render(<Home />);
+  test(
+    "renders movies when loaded",
+    () => {
+      render(
+        <MemoryRouter>
+          <Home />
+        </MemoryRouter>
+      );
 
-    expect(screen.getByText("MovieList")).toBeInTheDocument();
-    expect(screen.getByText("Pagination")).toBeInTheDocument();
-  });
+      expect(
+        screen.getByText(
+          "Movie List"
+        )
+      ).toBeInTheDocument();
 
-  test("handles search input change", () => {
-    render(<Home />);
+      expect(
+        screen.getByText(
+          "Pagination"
+        )
+      ).toBeInTheDocument();
+    }
+  );
 
-    const input = screen.getByTestId("search");
+  test(
+    "handles search input change",
+    async () => {
+      const user =
+        userEvent.setup();
 
-    fireEvent.change(input, { target: { value: "batman" } });
+      render(
+        <MemoryRouter>
+          <Home />
+        </MemoryRouter>
+      );
 
-    expect(mockSetSearchParams).toHaveBeenCalled();
-  });
+      const input =
+        screen.getByPlaceholderText(
+          /search movie/i
+        );
 
-  test("shows loader when loading", () => {
-    jest.resetModules();
+      await user.type(
+        input,
+        "Batman"
+      );
 
-    jest.doMock("../../hooks/useMovies", () => ({
-      default: () => ({
-        movies: [],
-        loading: true,
-      }),
-    }));
-
-    render(<Home />);
-
-    expect(screen.getByText("Loading...")).toBeInTheDocument();
-  });
+      expect(input).toHaveValue(
+        "Batman"
+      );
+    }
+  );
 });

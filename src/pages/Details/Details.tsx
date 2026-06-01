@@ -1,5 +1,5 @@
 import {
-  useSearchParams,
+  useParams,
 } from "react-router-dom";
 
 import useMovieDetails from "../../hooks/useMovieDetails";
@@ -9,57 +9,103 @@ import Loader from "../../components/Loader/Loader";
 import styles from "./Details.module.css";
 
 function Details() {
-  const [searchParams] =
-    useSearchParams();
+  const { id } =
+    useParams();
 
-  const id =
-    searchParams.get("details");
-
-  const { movie, loading } =
-    useMovieDetails(
-      id || undefined
-    );
+  const {
+    movie,
+    loading,
+    error,
+    refetch,
+    isFetching,
+  } = useMovieDetails(
+    id || undefined
+  );
 
   if (!id) return null;
 
   return (
     <div className={styles.panel}>
-      {loading && <Loader />}
+      {(loading ||
+        isFetching) && (
+        <Loader />
+      )}
 
-      {!loading && movie && (
-        <>
-          <img
-            className={styles.image}
-            src={
-              movie.backdrop_path
-                ? `https://image.tmdb.org/t/p/original${movie.backdrop_path}`
-                : "https://via.placeholder.com/600x300?text=No+Image"
+      {error && (
+        <div>
+          <p>
+            Failed to load
+            movie details.
+          </p>
+
+          <button
+            onClick={() =>
+              refetch()
             }
-            alt={movie.title}
-          />
-
-          <h2 className={styles.title}>
-            {movie.title}
-          </h2>
-
-          <p className={styles.text}>
-            {movie.overview ||
-              "No description available."}
-          </p>
-
-          <p className={styles.rating}>
-            ⭐{" "}
-            {movie.vote_average ||
-              "N/A"}
-          </p>
-        </>
+          >
+            Retry
+          </button>
+        </div>
       )}
 
-      {!loading && !movie && (
-        <p className={styles.text}>
-          Movie not found
-        </p>
-      )}
+      {!loading &&
+        !error &&
+        movie && (
+          <>
+            <img
+              className={
+                styles.image
+              }
+              src={
+                movie.backdrop_path
+                  ? `https://image.tmdb.org/t/p/original${movie.backdrop_path}`
+                  : "https://via.placeholder.com/600x300?text=No+Image"
+              }
+              alt={
+                movie.title
+              }
+            />
+
+            <h2
+              className={
+                styles.title
+              }
+            >
+              {movie.title}
+            </h2>
+
+            <p
+              className={
+                styles.text
+              }
+            >
+              {movie.overview ||
+                "No description available."}
+            </p>
+
+            <p
+              className={
+                styles.rating
+              }
+            >
+              ⭐{" "}
+              {movie.vote_average ||
+                "N/A"}
+            </p>
+          </>
+        )}
+
+      {!loading &&
+        !error &&
+        !movie && (
+          <p
+            className={
+              styles.text
+            }
+          >
+            Movie not found
+          </p>
+        )}
     </div>
   );
 }
