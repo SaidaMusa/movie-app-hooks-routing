@@ -8,17 +8,20 @@ import { MemoryRouter } from "react-router-dom";
 import AppRoutes from "./AppRoutes";
 
 import { ThemeProvider } from "../context/ThemeContext";
+import { createWrapper } from "../tests/queryWrapper";
 
 describe("AppRoutes", () => {
+  const Wrapper = createWrapper();
+
   test("renders home route", () => {
     render(
-      <ThemeProvider>
-        <MemoryRouter
-          initialEntries={["/"]}
-        >
-          <AppRoutes />
-        </MemoryRouter>
-      </ThemeProvider>
+      <Wrapper>
+        <ThemeProvider>
+          <MemoryRouter initialEntries={["/"]}>
+            <AppRoutes />
+          </MemoryRouter>
+        </ThemeProvider>
+      </Wrapper>
     );
 
     expect(
@@ -30,21 +33,19 @@ describe("AppRoutes", () => {
 
   test("renders about route", () => {
     render(
-      <ThemeProvider>
-        <MemoryRouter
-          initialEntries={[
-            "/about",
-          ]}
-        >
-          <AppRoutes />
-        </MemoryRouter>
-      </ThemeProvider>
+      <Wrapper>
+        <ThemeProvider>
+          <MemoryRouter
+            initialEntries={["/about"]}
+          >
+            <AppRoutes />
+          </MemoryRouter>
+        </ThemeProvider>
+      </Wrapper>
     );
 
     expect(
-      screen.getByText(
-        /about app/i
-      )
+      screen.getByText(/about app/i)
     ).toBeInTheDocument();
   });
 });

@@ -1,56 +1,33 @@
-import type {
-  Movie,
-  MovieDetails,
-} from "../types/movie";
+import type { Movie, MovieDetails } from "../types/movie";
+import { API_KEY } from "../../src/config/env";
 
-const API_KEY =
-  typeof import.meta !==
-    "undefined" &&
-  import.meta.env
-    .VITE_API_KEY
-    ? import.meta.env
-        .VITE_API_KEY
-    : "test_key";
-
-const BASE_URL =
-  "https://api.themoviedb.org/3";
+const BASE_URL = "https://api.themoviedb.org/3";
 
 export type MoviesResponse = {
   results: Movie[];
 };
 
-export async function getMovies(
-  page: number,
-  search: string
-): Promise<MoviesResponse> {
+export async function getMovies(page: number, search: string): Promise<MoviesResponse> {
   const url = search
     ? `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${search}&page=${page}`
     : `${BASE_URL}/movie/popular?api_key=${API_KEY}&page=${page}`;
 
-  const response =
-    await fetch(url);
+  const response = await fetch(url);
 
   if (!response.ok) {
-    throw new Error(
-      "Failed to load movies. Please try again."
-    );
+    throw new Error("Failed to load movies. Please try again.");
   }
 
   return response.json();
 }
 
-export async function getMovieDetails(
-  id: string
-): Promise<MovieDetails> {
-  const response =
-    await fetch(
-      `${BASE_URL}/movie/${id}?api_key=${API_KEY}`
-    );
+export async function getMovieDetails(id: string): Promise<MovieDetails> {
+  const response = await fetch(
+    `${BASE_URL}/movie/${id}?api_key=${API_KEY}`
+  );
 
   if (!response.ok) {
-    throw new Error(
-      "Failed to load movie details."
-    );
+    throw new Error("Failed to load movie details.");
   }
 
   return response.json();
