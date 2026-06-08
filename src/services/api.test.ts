@@ -1,6 +1,7 @@
 import { getMovies } from "./api";
 
-globalThis.fetch = jest.fn();
+global.fetch =
+  jest.fn() as jest.Mock;
 
 describe("getMovies", () => {
   afterEach(() => {
@@ -8,15 +9,25 @@ describe("getMovies", () => {
   });
 
   test("success case", async () => {
-
-    (fetch as jest.Mock).mockResolvedValueOnce({
-      
+    (
+      fetch as jest.Mock
+    ).mockResolvedValueOnce({
       ok: true,
-      json: async () => ({ results: [{ id: 1, title: "Movie" }] }),
+      json: async () => ({
+        results: [
+          {
+            id: 1,
+            title: "Movie",
+          },
+        ],
+      }),
     });
 
-    const data = await getMovies(1, "");
+    const data =
+      await getMovies(1, "");
 
-    expect(data.results[0].title).toBe("Movie");
+    expect(
+      data.results[0].title
+    ).toBe("Movie");
   });
 });

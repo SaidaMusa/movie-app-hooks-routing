@@ -1,32 +1,50 @@
-import { useEffect, useState } from "react";
-import type { Movie } from "../types/movie";
-import { getMovies } from "../services/api";
+import {
+  useQuery,
+} from "@tanstack/react-query";
 
-function useMovies(page: number, search: string) {
-  const [movies, setMovies] = useState<Movie[]>([]);
-  const [loading, setLoading] = useState(false);
+import {
+  getMovies,
+} from "../services/api";
 
-  useEffect(() => {
-    async function fetchMovies() {
-      setLoading(true);
+function useMovies(
+  page: number,
+  search: string
+) {
+  const query = useQuery({
+    queryKey: [
+      "movies",
+      page,
+      search,
+    ],
 
-      try {
-        const data = await getMovies(page, search);
+    queryFn: () =>
+      getMovies(
+        page,
+        search
+      ),
 
-        setMovies(data.results || []);
-      } catch (err) {
-        setMovies([]);
-      } finally {
-        setLoading(false);
-      }
-    }
+    staleTime: 0,
 
-    fetchMovies();
-  }, [page, search]);
+    refetchOnWindowFocus:
+      false,
+  });
 
   return {
-    movies,
-    loading,
+    movies:
+      query.data?.results ||
+      [],
+
+    loading:
+      query.isLoading,
+
+    error:
+      query.error,
+
+    refetch:
+      query.refetch,
+
+    isFetching:
+      query.isFetching,
   };
 }
 

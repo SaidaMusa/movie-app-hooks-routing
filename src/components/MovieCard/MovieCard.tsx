@@ -1,40 +1,104 @@
-import { Link, useSearchParams } from "react-router-dom";
-import type { Movie } from "../../types/movie";
+import {
+  Link,
+  useSearchParams,
+} from "react-router-dom";
+
+import type {
+  Movie,
+} from "../../types/movie";
+
 import styles from "./MovieCard.module.css";
+
+import {
+  useSelectedMovies,
+} from "../../store/useSelectedMovies";
 
 type Props = {
   movie: Movie;
 };
 
-function MovieCard({ movie }: Props) {
-  const [searchParams] = useSearchParams();
+function MovieCard({
+  movie,
+}: Props) {
+  const [searchParams] =
+    useSearchParams();
 
-  const params = new URLSearchParams(searchParams);
+  const page =
+    searchParams.get("page") ||
+    "1";
 
-  params.set("details", String(movie.id));
+  const search =
+    searchParams.get(
+      "search"
+    ) || "";
 
-  const query = `/?${params.toString()}`;
+  const {
+    toggleMovie,
+    isSelected,
+  } = useSelectedMovies();
+
+  const imageUrl =
+    movie.poster_path
+      ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+      : "https://dummyimage.com/300x450/cccccc/000000&text=No+Image";
 
   return (
-    <Link to={query} className={styles.link}>
-      <div className={styles.card}>
-        <img
-          className={styles.image}
-          src={
-            movie.poster_path
-              ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-              : "https://via.placeholder.com/300x450?text=No+Image"
-          }
-          alt={movie.title}
-        />
+    <div
+      className={
+        styles.wrapper
+      }
+    >
+      <input
+        type="checkbox"
+        checked={isSelected(
+          movie.id
+        )}
+        onClick={(e) =>
+          e.stopPropagation()
+        }
+        onChange={() =>
+          toggleMovie({
+            id: movie.id,
+            title:
+              movie.title,
+            overview:
+              movie.overview,
+          })
+        }
+      />
 
-        <div className={styles.content}>
-          <h3 className={styles.title}>
-            {movie.title}
-          </h3>
+      <Link
+        to={`/movie/${movie.id}?page=${page}&search=${search}&details=1`}
+      >
+        <div
+          className={
+            styles.card
+          }
+        >
+          <img
+            className={
+              styles.image
+            }
+            src={imageUrl}
+            alt={movie.title}
+          />
+
+          <div
+            className={
+              styles.content
+            }
+          >
+            <h3
+              className={
+                styles.title
+              }
+            >
+              {movie.title}
+            </h3>
+          </div>
         </div>
-      </div>
-    </Link>
+      </Link>
+    </div>
   );
 }
 

@@ -1,41 +1,84 @@
 .navWrapper {
   width: 100%;
-  display: flex;
-  justify-content: center;
-  background: #0d0d0d;
-  border-bottom: 1px solid #222;
+
+  background: var(--card);
+
+  border-bottom: 1px solid
+    var(--border);
+
+  position: sticky;
+
+  top: 0;
+
+  z-index: 100;
+
+  backdrop-filter: blur(10px);
 }
 
 .nav {
+  max-width: 1400px;
+
+  margin: 0 auto;
+
   display: flex;
-  justify-content: center;
+
   align-items: center;
-  gap: 35px;
-  padding: 14px 24px;
+
+  justify-content: center;
+
+  gap: 40px;
+
+  padding: 18px 24px;
+
+  position: relative;
+}
+
+.link,
+.activeLink {
+  position: relative;
+
+  font-size: 17px;
+
+  font-weight: 600;
+
+  text-decoration: none;
+
+  transition: 0.25s ease;
 }
 
 .link {
-  color: #b0b0b0;
-  text-decoration: none;
-  font-size: 15px;
-  font-weight: 500;
-  position: relative;
-  transition: all 0.25s ease;
-  padding: 6px 4px;
+  color: #8b8b8b;
 }
 
 .link:hover {
-  color: #ffffff;
+  color: var(--text);
 }
 
-.link::after {
+.activeLink {
+  color: var(--text);
+}
+
+.link::after,
+.activeLink::after {
   content: "";
+
   position: absolute;
+
   left: 0;
-  bottom: 0;
+  bottom: -6px;
+
   width: 0%;
+
   height: 2px;
-  background: #e53935;
+
+  border-radius: 20px;
+
+  background: linear-gradient(
+    90deg,
+    #ff2e63,
+    #ff5f6d
+  );
+
   transition: 0.3s ease;
 }
 
@@ -43,17 +86,46 @@
   width: 100%;
 }
 
-.activeLink {
-  color: #ffffff;
-  position: relative;
+.activeLink::after {
+  width: 100%;
 }
 
-.activeLink::after {
-  content: "";
+.themeBtn {
   position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 2px;
-  background: #e53935;
+
+  right: 24px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  background: var(--bg);
+
+  color: var(--text);
+
+  padding: 10px 18px;
+
+  border-radius: 999px;
+
+  border: 1px solid
+    var(--border);
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  transition: 0.25s ease;
+}
+
+.themeBtn:hover {
+  transform: translateY(-2px);
+
+  box-shadow: 0 6px 18px
+    rgba(255, 46, 99, 0.2);
+}
+
+.themeIcon {
+  font-size: 16px;
 }
