@@ -1,53 +1,118 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1779688660800" clover="3.2.0">
-  <project timestamp="1779688660800" name="All files">
-    <metrics statements="149" coveredstatements="122" conditionals="67" coveredconditionals="46" methods="47" coveredmethods="35" elements="263" coveredelements="203" complexity="0" loc="149" ncloc="149" packages="14" files="15" classes="15"/>
+<coverage generated="1780932444897" clover="3.2.0">
+  <project timestamp="1780932444897" name="All files">
+    <metrics statements="270" coveredstatements="198" conditionals="126" coveredconditionals="58" methods="78" coveredmethods="51" elements="474" coveredelements="307" complexity="0" loc="270" ncloc="270" packages="23" files="26" classes="26"/>
     <package name="components.Flyout">
-      <metrics statements="24" coveredstatements="10" conditionals="4" coveredconditionals="4" methods="5" coveredmethods="2"/>
+      <metrics statements="24" coveredstatements="22" conditionals="4" coveredconditionals="4" methods="5" coveredmethods="4"/>
       <file name="Flyout.tsx" path="C:\Users\user\Desktop\React\react\vite-project\src\components\Flyout\Flyout.tsx">
-        <metrics statements="24" coveredstatements="10" conditionals="4" coveredconditionals="4" methods="5" coveredmethods="2"/>
-        <line num="1" count="2" type="stmt"/>
-        <line num="5" count="2" type="stmt"/>
-        <line num="9" count="2" type="stmt"/>
-        <line num="13" count="13" type="stmt"/>
-        <line num="18" count="12" type="stmt"/>
-        <line num="20" count="12" type="cond" truecount="2" falsecount="0"/>
-        <line num="23" count="8" type="stmt"/>
-        <line num="28" count="0" type="stmt"/>
-        <line num="31" count="0" type="stmt"/>
-        <line num="34" count="0" type="stmt"/>
-        <line num="39" count="0" type="stmt"/>
-        <line num="42" count="0" type="stmt"/>
-        <line num="47" count="0" type="stmt"/>
-        <line num="52" count="0" type="stmt"/>
-        <line num="56" count="0" type="stmt"/>
-        <line num="58" count="0" type="stmt"/>
-        <line num="60" count="0" type="stmt"/>
-        <line num="62" count="0" type="stmt"/>
-        <line num="66" count="0" type="stmt"/>
+        <metrics statements="24" coveredstatements="22" conditionals="4" coveredconditionals="4" methods="5" coveredmethods="4"/>
+        <line num="1" count="3" type="stmt"/>
+        <line num="5" count="3" type="stmt"/>
+        <line num="9" count="3" type="stmt"/>
+        <line num="13" count="14" type="stmt"/>
+        <line num="18" count="14" type="stmt"/>
+        <line num="20" count="14" type="cond" truecount="2" falsecount="0"/>
+        <line num="23" count="9" type="stmt"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="34" count="1" type="stmt"/>
+        <line num="39" count="1" type="stmt"/>
+        <line num="42" count="1" type="stmt"/>
+        <line num="47" count="1" type="stmt"/>
+        <line num="52" count="1" type="stmt"/>
+        <line num="56" count="1" type="stmt"/>
+        <line num="58" count="1" type="stmt"/>
+        <line num="60" count="1" type="stmt"/>
+        <line num="62" count="1" type="stmt"/>
+        <line num="66" count="1" type="stmt"/>
         <line num="70" count="0" type="stmt"/>
         <line num="72" count="0" type="stmt"/>
-        <line num="75" count="4" type="stmt"/>
-        <line num="86" count="1" type="stmt"/>
-        <line num="141" count="2" type="stmt"/>
+        <line num="75" count="5" type="stmt"/>
+        <line num="86" count="2" type="stmt"/>
+        <line num="141" count="3" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.Form">
+      <metrics statements="39" coveredstatements="3" conditionals="37" coveredconditionals="0" methods="3" coveredmethods="0"/>
+      <file name="Form.tsx" path="C:\Users\user\Desktop\React\react\vite-project\src\components\Form\Form.tsx">
+        <metrics statements="39" coveredstatements="3" conditionals="37" coveredconditionals="0" methods="3" coveredmethods="0"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="23" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="25" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="26" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="27" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="28" count="0" type="stmt"/>
+        <line num="31" count="0" type="cond" truecount="0" falsecount="6"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
+        <line num="36" count="0" type="cond" truecount="0" falsecount="5"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="38" count="0" type="stmt"/>
+        <line num="41" count="0" type="stmt"/>
+        <line num="42" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="43" count="0" type="stmt"/>
+        <line num="44" count="0" type="stmt"/>
+        <line num="47" count="0" type="stmt"/>
+        <line num="58" count="0" type="stmt"/>
+        <line num="61" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="62" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="63" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="64" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="65" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="66" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="68" count="0" type="stmt"/>
+        <line num="69" count="0" type="stmt"/>
+        <line num="72" count="0" type="stmt"/>
+        <line num="96" count="2" type="stmt"/>
       </file>
     </package>
     <package name="components.Loader">
       <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="Loader.tsx" path="C:\Users\user\Desktop\React\react\vite-project\src\components\Loader\Loader.tsx">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="1" count="3" type="stmt"/>
-        <line num="4" count="2" type="stmt"/>
-        <line num="17" count="3" type="stmt"/>
+        <line num="1" count="4" type="stmt"/>
+        <line num="4" count="3" type="stmt"/>
+        <line num="17" count="4" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.Modal">
+      <metrics statements="14" coveredstatements="7" conditionals="6" coveredconditionals="2" methods="5" coveredmethods="2"/>
+      <file name="Modal.tsx" path="C:\Users\user\Desktop\React\react\vite-project\src\components\Modal\Modal.tsx">
+        <metrics statements="14" coveredstatements="7" conditionals="6" coveredconditionals="2" methods="5" coveredmethods="2"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="12" count="9" type="stmt"/>
+        <line num="13" count="9" type="cond" truecount="1" falsecount="1"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="16" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="25" count="9" type="cond" truecount="1" falsecount="1"/>
+        <line num="27" count="0" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="44" count="2" type="stmt"/>
       </file>
     </package>
     <package name="components.MovieCard">
       <metrics statements="12" coveredstatements="10" conditionals="6" coveredconditionals="5" methods="3" coveredmethods="1"/>
       <file name="MovieCard.tsx" path="C:\Users\user\Desktop\React\react\vite-project\src\components\MovieCard\MovieCard.tsx">
         <metrics statements="12" coveredstatements="10" conditionals="6" coveredconditionals="5" methods="3" coveredmethods="1"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="12" count="1" type="stmt"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="10" count="2" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
         <line num="24" count="3" type="stmt"/>
         <line num="27" count="3" type="cond" truecount="2" falsecount="0"/>
         <line num="31" count="3" type="cond" truecount="2" falsecount="0"/>
@@ -56,166 +121,282 @@
         <line num="45" count="3" type="stmt"/>
         <line num="57" count="0" type="stmt"/>
         <line num="60" count="0" type="stmt"/>
-        <line num="105" count="1" type="stmt"/>
+        <line num="105" count="2" type="stmt"/>
       </file>
     </package>
     <package name="components.MovieList">
       <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
       <file name="MovieList.tsx" path="C:\Users\user\Desktop\React\react\vite-project\src\components\MovieList\MovieList.tsx">
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
         <line num="10" count="1" type="stmt"/>
         <line num="13" count="2" type="stmt"/>
-        <line num="22" count="1" type="stmt"/>
+        <line num="22" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.Navbar">
+      <metrics statements="8" coveredstatements="8" conditionals="6" coveredconditionals="5" methods="3" coveredmethods="3"/>
+      <file name="Navbar.tsx" path="C:\Users\user\Desktop\React\react\vite-project\src\components\Navbar\Navbar.tsx">
+        <metrics statements="8" coveredstatements="8" conditionals="6" coveredconditionals="5" methods="3" coveredmethods="3"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="19" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="30" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="53" count="1" type="stmt"/>
       </file>
     </package>
     <package name="components.Pagination">
       <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
       <file name="Pagination.tsx" path="C:\Users\user\Desktop\React\react\vite-project\src\components\Pagination\Pagination.tsx">
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
-        <line num="1" count="1" type="stmt"/>
+        <line num="1" count="2" type="stmt"/>
         <line num="9" count="4" type="stmt"/>
         <line num="14" count="1" type="stmt"/>
         <line num="24" count="1" type="stmt"/>
-        <line num="32" count="1" type="stmt"/>
+        <line num="32" count="2" type="stmt"/>
       </file>
     </package>
     <package name="components.SearchBar">
       <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
       <file name="SearchBar.tsx" path="C:\Users\user\Desktop\React\react\vite-project\src\components\SearchBar\SearchBar.tsx">
         <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="9" count="8" type="stmt"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="9" count="9" type="stmt"/>
         <line num="15" count="6" type="stmt"/>
-        <line num="20" count="1" type="stmt"/>
+        <line num="20" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.SubmissionCard">
+      <metrics statements="4" coveredstatements="2" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
+      <file name="SubmissionCard.tsx" path="C:\Users\user\Desktop\React\react\vite-project\src\components\SubmissionCard\SubmissionCard.tsx">
+        <metrics statements="4" coveredstatements="2" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="28" count="0" type="stmt"/>
+        <line num="37" count="2" type="stmt"/>
       </file>
     </package>
     <package name="components.ThrowErrorButton">
       <metrics statements="7" coveredstatements="7" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
       <file name="ThrowErrorButton.tsx" path="C:\Users\user\Desktop\React\react\vite-project\src\components\ThrowErrorButton\ThrowErrorButton.tsx">
         <metrics statements="7" coveredstatements="7" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
-        <line num="1" count="2" type="stmt"/>
-        <line num="5" count="13" type="stmt"/>
-        <line num="7" count="12" type="cond" truecount="2" falsecount="0"/>
+        <line num="1" count="3" type="stmt"/>
+        <line num="5" count="14" type="stmt"/>
+        <line num="7" count="13" type="cond" truecount="2" falsecount="0"/>
         <line num="8" count="2" type="stmt"/>
-        <line num="13" count="10" type="stmt"/>
+        <line num="13" count="11" type="stmt"/>
         <line num="16" count="1" type="stmt"/>
-        <line num="31" count="2" type="stmt"/>
+        <line num="31" count="3" type="stmt"/>
+      </file>
+    </package>
+    <package name="config">
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="env.ts" path="C:\Users\user\Desktop\React\react\vite-project\src\config\env.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
       </file>
     </package>
     <package name="context">
       <metrics statements="14" coveredstatements="13" conditionals="4" coveredconditionals="2" methods="5" coveredmethods="5"/>
       <file name="ThemeContext.tsx" path="C:\Users\user\Desktop\React\react\vite-project\src\context\ThemeContext.tsx">
         <metrics statements="14" coveredstatements="13" conditionals="4" coveredconditionals="2" methods="5" coveredmethods="5"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="19" count="1" type="stmt"/>
-        <line num="23" count="1" type="stmt"/>
-        <line num="29" count="3" type="stmt"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="19" count="2" type="stmt"/>
+        <line num="23" count="2" type="stmt"/>
+        <line num="29" count="5" type="stmt"/>
         <line num="32" count="1" type="stmt"/>
         <line num="33" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="39" count="3" type="stmt"/>
-        <line num="40" count="3" type="stmt"/>
-        <line num="46" count="3" type="stmt"/>
-        <line num="58" count="1" type="stmt"/>
-        <line num="60" count="3" type="stmt"/>
-        <line num="62" count="3" type="cond" truecount="1" falsecount="1"/>
+        <line num="39" count="5" type="stmt"/>
+        <line num="40" count="5" type="stmt"/>
+        <line num="46" count="5" type="stmt"/>
+        <line num="58" count="2" type="stmt"/>
+        <line num="60" count="5" type="stmt"/>
+        <line num="62" count="5" type="cond" truecount="1" falsecount="1"/>
         <line num="63" count="0" type="stmt"/>
-        <line num="68" count="3" type="stmt"/>
+        <line num="68" count="5" type="stmt"/>
       </file>
     </package>
     <package name="hooks">
-      <metrics statements="12" coveredstatements="12" conditionals="4" coveredconditionals="4" methods="4" coveredmethods="4"/>
+      <metrics statements="23" coveredstatements="20" conditionals="6" coveredconditionals="5" methods="7" coveredmethods="6"/>
+      <file name="useLocalStorage.ts" path="C:\Users\user\Desktop\React\react\vite-project\src\hooks\useLocalStorage.ts">
+        <metrics statements="11" coveredstatements="8" conditionals="2" coveredconditionals="1" methods="3" coveredmethods="2"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="12" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="34" count="1" type="stmt"/>
+      </file>
       <file name="useMovieDetails.ts" path="C:\Users\user\Desktop\React\react\vite-project\src\hooks\useMovieDetails.ts">
         <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
         <line num="12" count="4" type="stmt"/>
         <line num="19" count="2" type="stmt"/>
         <line num="26" count="4" type="stmt"/>
-        <line num="44" count="1" type="stmt"/>
+        <line num="44" count="2" type="stmt"/>
       </file>
       <file name="useMovies.ts" path="C:\Users\user\Desktop\React\react\vite-project\src\hooks\useMovies.ts">
         <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="13" count="5" type="stmt"/>
+        <line num="21" count="3" type="stmt"/>
+        <line num="32" count="5" type="stmt"/>
+        <line num="51" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="layouts">
+      <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="MainLayout.tsx" path="C:\Users\user\Desktop\React\react\vite-project\src\layouts\MainLayout.tsx">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="13" count="4" type="stmt"/>
-        <line num="21" count="2" type="stmt"/>
-        <line num="32" count="4" type="stmt"/>
-        <line num="51" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="pages.About">
+      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="About.tsx" path="C:\Users\user\Desktop\React\react\vite-project\src\pages\About\About.tsx">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="32" count="1" type="stmt"/>
       </file>
     </package>
     <package name="pages.Details">
       <metrics statements="10" coveredstatements="9" conditionals="23" coveredconditionals="15" methods="2" coveredmethods="1"/>
       <file name="Details.tsx" path="C:\Users\user\Desktop\React\react\vite-project\src\pages\Details\Details.tsx">
         <metrics statements="10" coveredstatements="9" conditionals="23" coveredconditionals="15" methods="2" coveredmethods="1"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="7" count="1" type="stmt"/>
-        <line num="9" count="1" type="stmt"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
         <line num="13" count="1" type="stmt"/>
         <line num="21" count="1" type="stmt"/>
         <line num="25" count="1" type="cond" truecount="1" falsecount="1"/>
         <line num="27" count="1" type="stmt"/>
         <line num="43" count="0" type="stmt"/>
-        <line num="113" count="1" type="stmt"/>
+        <line num="113" count="2" type="stmt"/>
       </file>
     </package>
     <package name="pages.Home">
-      <metrics statements="33" coveredstatements="24" conditionals="22" coveredconditionals="12" methods="8" coveredmethods="2"/>
+      <metrics statements="43" coveredstatements="33" conditionals="22" coveredconditionals="14" methods="12" coveredmethods="4"/>
       <file name="Home.tsx" path="C:\Users\user\Desktop\React\react\vite-project\src\pages\Home\Home.tsx">
-        <metrics statements="33" coveredstatements="24" conditionals="22" coveredconditionals="12" methods="8" coveredmethods="2"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="8" count="1" type="stmt"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="12" count="1" type="stmt"/>
-        <line num="14" count="1" type="stmt"/>
-        <line num="16" count="1" type="stmt"/>
-        <line num="18" count="1" type="stmt"/>
-        <line num="20" count="1" type="stmt"/>
-        <line num="22" count="1" type="stmt"/>
-        <line num="24" count="1" type="stmt"/>
-        <line num="28" count="8" type="stmt"/>
-        <line num="31" count="8" type="stmt"/>
-        <line num="34" count="8" type="stmt"/>
-        <line num="39" count="8" type="stmt"/>
-        <line num="44" count="8" type="stmt"/>
-        <line num="49" count="8" type="cond" truecount="2" falsecount="0"/>
-        <line num="57" count="8" type="stmt"/>
+        <metrics statements="43" coveredstatements="33" conditionals="22" coveredconditionals="14" methods="12" coveredmethods="4"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="10" count="2" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="16" count="2" type="stmt"/>
+        <line num="17" count="2" type="stmt"/>
+        <line num="19" count="2" type="stmt"/>
+        <line num="20" count="2" type="stmt"/>
+        <line num="21" count="2" type="stmt"/>
+        <line num="23" count="2" type="stmt"/>
+        <line num="25" count="2" type="stmt"/>
+        <line num="28" count="9" type="stmt"/>
+        <line num="29" count="9" type="stmt"/>
+        <line num="30" count="9" type="stmt"/>
+        <line num="32" count="9" type="stmt"/>
+        <line num="37" count="9" type="stmt"/>
+        <line num="39" count="9" type="cond" truecount="2" falsecount="0"/>
+        <line num="40" count="9" type="cond" truecount="2" falsecount="0"/>
+        <line num="42" count="9" type="stmt"/>
+        <line num="47" count="33" type="stmt"/>
+        <line num="48" count="33" type="stmt"/>
+        <line num="50" count="9" type="stmt"/>
+        <line num="53" count="9" type="stmt"/>
+        <line num="54" count="0" type="stmt"/>
+        <line num="58" count="6" type="stmt"/>
+        <line num="60" count="6" type="cond" truecount="1" falsecount="1"/>
+        <line num="61" count="6" type="stmt"/>
         <line num="63" count="0" type="stmt"/>
-        <line num="69" count="6" type="stmt"/>
-        <line num="74" count="6" type="cond" truecount="1" falsecount="1"/>
-        <line num="75" count="6" type="stmt"/>
-        <line num="79" count="0" type="stmt"/>
-        <line num="83" count="6" type="stmt"/>
-        <line num="95" count="0" type="stmt"/>
-        <line num="99" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="100" count="0" type="stmt"/>
-        <line num="104" count="0" type="stmt"/>
-        <line num="110" count="0" type="stmt"/>
-        <line num="116" count="8" type="stmt"/>
-        <line num="120" count="8" type="stmt"/>
-        <line num="183" count="0" type="stmt"/>
-        <line num="189" count="0" type="stmt"/>
-        <line num="278" count="1" type="stmt"/>
+        <line num="66" count="6" type="stmt"/>
+        <line num="71" count="0" type="stmt"/>
+        <line num="75" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="77" count="0" type="stmt"/>
+        <line num="81" count="0" type="stmt"/>
+        <line num="84" count="9" type="stmt"/>
+        <line num="146" count="0" type="stmt"/>
+        <line num="162" count="0" type="stmt"/>
+        <line num="174" count="0" type="stmt"/>
+        <line num="176" count="0" type="stmt"/>
+        <line num="182" count="2" type="stmt"/>
       </file>
     </package>
     <package name="pages.NotFound">
       <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="NotFound.tsx" path="C:\Users\user\Desktop\React\react\vite-project\src\pages\NotFound\NotFound.tsx">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="1" count="1" type="stmt"/>
+        <line num="1" count="2" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
-        <line num="13" count="1" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="routes">
+      <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="AppRoutes.tsx" path="C:\Users\user\Desktop\React\react\vite-project\src\routes\AppRoutes.tsx">
+        <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="17" count="2" type="stmt"/>
+        <line num="60" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="services">
+      <metrics statements="13" coveredstatements="8" conditionals="6" coveredconditionals="2" methods="2" coveredmethods="1"/>
+      <file name="api.ts" path="C:\Users\user\Desktop\React\react\vite-project\src\services\api.ts">
+        <metrics statements="13" coveredstatements="8" conditionals="6" coveredconditionals="2" methods="2" coveredmethods="1"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="10" count="2" type="stmt"/>
+        <line num="11" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="17" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="24" count="2" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="29" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
       </file>
     </package>
     <package name="store">
-      <metrics statements="12" coveredstatements="12" conditionals="2" coveredconditionals="2" methods="7" coveredmethods="7"/>
+      <metrics statements="17" coveredstatements="14" conditionals="2" coveredconditionals="2" methods="13" coveredmethods="8"/>
+      <file name="useFormsStore.ts" path="C:\Users\user\Desktop\React\react\vite-project\src\store\useFormsStore.ts">
+        <metrics statements="5" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="1"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="21" count="2" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+      </file>
       <file name="useSelectedMovies.ts" path="C:\Users\user\Desktop\React\react\vite-project\src\store\useSelectedMovies.ts">
         <metrics statements="12" coveredstatements="12" conditionals="2" coveredconditionals="2" methods="7" coveredmethods="7"/>
-        <line num="1" count="3" type="stmt"/>
-        <line num="21" count="3" type="stmt"/>
-        <line num="22" count="3" type="stmt"/>
+        <line num="1" count="4" type="stmt"/>
+        <line num="21" count="4" type="stmt"/>
+        <line num="22" count="4" type="stmt"/>
         <line num="26" count="5" type="stmt"/>
         <line num="27" count="1" type="stmt"/>
         <line num="30" count="5" type="cond" truecount="2" falsecount="0"/>
@@ -231,11 +412,11 @@
       <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
       <file name="queryWrapper.tsx" path="C:\Users\user\Desktop\React\react\vite-project\src\tests\queryWrapper.tsx">
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
-        <line num="1" count="2" type="stmt"/>
-        <line num="10" count="2" type="stmt"/>
-        <line num="12" count="4" type="stmt"/>
-        <line num="20" count="4" type="stmt"/>
-        <line num="23" count="4" type="stmt"/>
+        <line num="1" count="3" type="stmt"/>
+        <line num="10" count="3" type="stmt"/>
+        <line num="12" count="5" type="stmt"/>
+        <line num="20" count="5" type="stmt"/>
+        <line num="23" count="6" type="stmt"/>
       </file>
     </package>
   </project>

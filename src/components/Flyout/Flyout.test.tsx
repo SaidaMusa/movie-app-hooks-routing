@@ -1,108 +1,55 @@
-import {
-  render,
-  screen,
-  fireEvent,
-} from "@testing-library/react";
-
+import { render, screen, fireEvent } from "@testing-library/react";
 import Flyout from "./Flyout";
 
-jest.mock(
-  "../../store/useSelectedMovies",
-  () => ({
-    useSelectedMovies:
-      () => ({
-        selected: [
-          {
-            id: 1,
-            title:
-              "Batman",
-            overview:
-              "Movie",
-          },
-        ],
-        clearSelected:
-          jest.fn(),
-      }),
-  })
-);
+jest.mock("../../store/useSelectedMovies", () => ({
+  useSelectedMovies: () => ({
+    selected: [
+      {
+        id: 1,
+        title: "Batman",
+        overview: "Movie",
+      },
+    ],
+    clearSelected: jest.fn(),
+  }),
+}));
 
-describe(
-  "Flyout",
-  () => {
-    beforeEach(() => {
-      global.URL.createObjectURL =
-        jest.fn(
-          () => "mock-url"
-        );
+describe("Flyout", () => {
+  beforeEach(() => {
+    global.URL.createObjectURL = jest.fn(() => "mock-url");
+    global.URL.revokeObjectURL = jest.fn();
+  });
 
-      global.URL.revokeObjectURL =
-        jest.fn();
-    });
+  test("renders flyout actions", () => {
+    render(<Flyout />);
 
-    test(
-      "renders flyout actions",
-      () => {
-        render(
-          <Flyout />
-        );
+    fireEvent.click(screen.getByText(/actions/i));
 
-        fireEvent.click(
-          screen.getByText(
-            /actions/i
-          )
-        );
+    expect(screen.getByText(/download csv/i)).toBeInTheDocument();
+  });
 
-        expect(
-          screen.getByText(
-            /download csv/i
-          )
-        ).toBeInTheDocument();
+  test("downloads csv", () => {
+    const clickMock = jest.fn();
+
+    const originalCreateElement = document.createElement;
+
+    document.createElement = jest.fn((tagName) => {
+      const el = originalCreateElement.call(document, tagName);
+
+      if (tagName === "a") {
+        el.click = clickMock;
       }
-    );
 
-    test(
-      "downloads csv",
-      () => {
-        const clickMock =
-          jest.fn();
+      return el;
+    }) as any;
 
-        const link =
-          document.createElement(
-            "a"
-          );
+    render(<Flyout />);
 
-        link.click =
-          clickMock;
+    fireEvent.click(screen.getByText(/actions/i));
+    fireEvent.click(screen.getByText(/download csv/i));
 
-        jest
-          .spyOn(
-            document,
-            "createElement"
-          )
-          .mockReturnValue(
-            link
-          );
+    expect(clickMock).toHaveBeenCalled();
 
-        render(
-          <Flyout />
-        );
-
-        fireEvent.click(
-          screen.getByText(
-            /actions/i
-          )
-        );
-
-        fireEvent.click(
-          screen.getByText(
-            /download csv/i
-          )
-        );
-
-        expect(
-          clickMock
-        ).toHaveBeenCalled();
-      }
-    );
-  }
-);
+    document.createElement = originalCreateElement;
+  });
+});
