@@ -50,12 +50,9 @@ function Home() {
 
   const isDetailsOpen = location.pathname.includes("/movie/");
 
-  // ✅ useMemo: movies list pass-through (future safe)
   const memoizedMovies = useMemo(() => movies, [movies]);
 
-  // ========================
-  // 🔥 CALLBACKS (IMPORTANT)
-  // ========================
+ 
 
   const handleRefresh = useCallback(() => {
     refetch();
@@ -110,13 +107,12 @@ function Home() {
 
   return (
     <div className={styles.container}>
-      {/* LEFT SIDE */}
       <div className={styles.left}>
         <SearchBar value={search} onChange={handleSearch} />
 
         <div className={styles.topBar}>
           <button className={styles.refreshBtn} onClick={handleRefresh}>
-            ↻ Refresh
+            Refresh
           </button>
 
           {isFetching && (
@@ -148,7 +144,6 @@ function Home() {
         )}
       </div>
 
-      {/* RIGHT SIDE */}
       <div
         className={`${styles.right} ${
           !isDetailsOpen ? styles.hidden : ""
@@ -189,7 +184,6 @@ function Home() {
         </div>
       </div>
 
-      {/* MODAL */}
       <Modal open={isModalOpen} onClose={closeModal}>
         {formType === "uncontrolled" ? (
           <Form onClose={closeModal} />
