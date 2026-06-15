@@ -7,27 +7,25 @@ export type FormSubmission = {
   email: string;
   gender: string;
   country: string;
-  image: string;
+  image?: string;
+  password?: string;
   createdAt: number;
-  password?: string; 
 };
 
-type Store = {
+type FormsStore = {
   submissions: FormSubmission[];
-  addSubmission: (data: FormSubmission) => void;
+  addSubmission: (submission: FormSubmission) => void;
   removeSubmission: (id: string) => void;
 };
 
-export const useFormsStore = create<Store>((set) => ({
+export const useFormsStore = create<FormsStore>((set) => ({
   submissions: [],
-
-  addSubmission: (data) =>
+  addSubmission: (submission) =>
     set((state) => ({
-      submissions: [data, ...state.submissions],
+      submissions: [submission, ...state.submissions],
     })),
-
   removeSubmission: (id) =>
     set((state) => ({
-      submissions: state.submissions.filter((i) => i.id !== id),
+      submissions: state.submissions.filter((s) => s.id !== id),
     })),
 }));

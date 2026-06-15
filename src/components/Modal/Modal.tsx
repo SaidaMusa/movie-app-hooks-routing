@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
 import styles from "./Modal.module.css";
 
@@ -22,6 +22,15 @@ function Modal({ open, onClose, children }: Props) {
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, [open, onClose]);
 
+  const closeBtnRef =
+  useRef<HTMLButtonElement>(null);
+
+useEffect(() => {
+  if (open) {
+    closeBtnRef.current?.focus();
+  }
+}, [open]);
+
   if (!open) return null;
 
   return ReactDOM.createPortal(
@@ -30,9 +39,13 @@ function Modal({ open, onClose, children }: Props) {
         className={styles.modal}
         onClick={(e) => e.stopPropagation()}
       >
-        <button className={styles.close} onClick={onClose}>
-          ✖
-        </button>
+        <button
+  ref={closeBtnRef}
+  className={styles.close}
+  onClick={onClose}
+>
+  ✖
+</button>
 
         {children}
       </div>
