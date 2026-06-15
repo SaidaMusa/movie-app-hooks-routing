@@ -1,11 +1,12 @@
-.list{
-  display: grid;
+.gridWrapper {
+  width: 100%;
+}
 
-  grid-template-columns:
-    repeat(
-      auto-fill,
-      minmax(220px, 1fr)
-    );
+.ReactVirtualized__Grid {
+  scrollbar-width: none;
 
-  gap: 26px;
+}
+
+.ReactVirtualized__Grid::-webkit-scrollbar {
+  display: none;
 }

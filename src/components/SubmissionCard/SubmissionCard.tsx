@@ -9,19 +9,30 @@ type Props = {
 function SubmissionCard({ item, onDelete }: Props) {
   return (
     <div className={styles.card}>
-     <img
-  className={styles.image}
-  src={item.image || "https://via.placeholder.com/100"}
-  alt={item.name}
-/>
+      <img
+        className={styles.image}
+        src={item.image || "https://via.placeholder.com/120x120?text=No+Image"}
+        alt={item.name}
+      />
 
       <div className={styles.content}>
         <h3 className={styles.name}>{item.name}</h3>
 
-        <p className={styles.text}>Age: {item.age}</p>
-        <p className={styles.text}>Email: {item.email}</p>
-        <p className={styles.text}>Gender: {item.gender}</p>
-        <p className={styles.text}>Country: {item.country}</p>
+        <p className={styles.text}>
+          <strong>Age:</strong> {item.age}
+        </p>
+
+        <p className={styles.text}>
+          <strong>Email:</strong> {item.email}
+        </p>
+
+        <p className={styles.text}>
+          <strong>Gender:</strong> {item.gender}
+        </p>
+
+        <p className={styles.text}>
+          <strong>Country:</strong> {item.country}
+        </p>
 
         <button
           className={styles.deleteBtn}

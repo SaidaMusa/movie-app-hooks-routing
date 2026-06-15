@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback, useMemo } from "react";
 import {
   Outlet,
   useLocation,
@@ -8,14 +8,13 @@ import {
 
 import useMovies from "../../hooks/useMovies";
 import useLocalStorage from "../../hooks/useLocalStorage";
-
+import RHFForm from "../../components/Form/RHFForm";
 import MovieList from "../../components/MovieList/MovieList";
 import Pagination from "../../components/Pagination/Pagination";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import Loader from "../../components/Loader/Loader";
 import ThrowErrorButton from "../../components/ThrowErrorButton/ThrowErrorButton";
 import Flyout from "../../components/Flyout/Flyout";
-
 import Modal from "../../components/Modal/Modal";
 import Form from "../../components/Form/Form";
 import SubmissionCard from "../../components/SubmissionCard/SubmissionCard";
@@ -35,6 +34,8 @@ function Home() {
   );
 
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [formType, setFormType] =
+    useState<"uncontrolled" | "rhf">("uncontrolled");
 
   const page = Number(searchParams.get("page") || 1);
   const search = searchParams.get("search") || "";
@@ -49,37 +50,63 @@ function Home() {
 
   const isDetailsOpen = location.pathname.includes("/movie/");
 
-  // ✅ FIX: refetch type error
-  const handleRefresh = () => {
+  // ✅ useMemo: movies list pass-through (future safe)
+  const memoizedMovies = useMemo(() => movies, [movies]);
+
+  // ========================
+  // 🔥 CALLBACKS (IMPORTANT)
+  // ========================
+
+  const handleRefresh = useCallback(() => {
     refetch();
-  };
+  }, [refetch]);
 
-  function handleSearch(value: string) {
-    setSearchParams({ page: "1", search: value });
+  const handleSearch = useCallback(
+    (value: string) => {
+      setSearchParams({ page: "1", search: value });
 
-    if (value.trim()) {
-      const updated = [
-        value,
-        ...recentSearches.filter((i) => i !== value),
-      ].slice(0, 5);
+      if (value.trim()) {
+        const updated = [
+          value,
+          ...recentSearches.filter((i) => i !== value),
+        ].slice(0, 5);
 
-      setRecentSearches(updated);
-    }
-  }
+        setRecentSearches(updated);
+      }
+    },
+    [setSearchParams, recentSearches, setRecentSearches]
+  );
 
-  function handlePageChange(newPage: number) {
-    const params: Record<string, string> = {
-      page: String(newPage),
-    };
+  const handlePageChange = useCallback(
+    (newPage: number) => {
+      const params: Record<string, string> = {
+        page: String(newPage),
+      };
 
-    if (search) params.search = search;
+      if (search) params.search = search;
 
-    setSearchParams(params);
-  }
+      setSearchParams(params);
+    },
+    [search, setSearchParams]
+  );
 
-  function closeDetails() {
+  const closeDetails = useCallback(() => {
     navigate(`/?page=${page}&search=${search}`);
-  }
+  }, [navigate, page, search]);
+
+  const openUncontrolledForm = useCallback(() => {
+    setFormType("uncontrolled");
+    setIsModalOpen(true);
+  }, []);
+
+  const openRHFForm = useCallback(() => {
+    setFormType("rhf");
+    setIsModalOpen(true);
+  }, []);
+
+  const closeModal = useCallback(() => {
+    setIsModalOpen(false);
+  }, []);
 
   return (
     <div className={styles.container}>
@@ -101,21 +128,17 @@ function Home() {
 
         <ThrowErrorButton />
 
-        {error && (
-          <div className={styles.error}>
-            Failed to load movies
-          </div>
-        )}
+        {error && <div className={styles.error}>Failed to load movies</div>}
 
         {loading ? (
           <Loader />
-        ) : movies.length === 0 ? (
+        ) : memoizedMovies.length === 0 ? (
           <div className={styles.empty}>
             <h3>No movies found</h3>
           </div>
         ) : (
           <>
-            <MovieList movies={movies} />
+            <MovieList movies={memoizedMovies} />
 
             <Pagination
               currentPage={page}
@@ -125,7 +148,7 @@ function Home() {
         )}
       </div>
 
-      {/* RIGHT SIDE (PROFESSIONAL PANEL) */}
+      {/* RIGHT SIDE */}
       <div
         className={`${styles.right} ${
           !isDetailsOpen ? styles.hidden : ""
@@ -133,19 +156,17 @@ function Home() {
       >
         <div className={styles.rightHeader}>
           {isDetailsOpen && (
-            <button
-              className={styles.closeBtn}
-              onClick={closeDetails}
-            >
+            <button className={styles.closeBtn} onClick={closeDetails}>
               ✖ Close
             </button>
           )}
 
-          <button
-            className={styles.addBtn}
-            onClick={() => setIsModalOpen(true)}
-          >
-            + Add Submission
+          <button className={styles.addBtn} onClick={openUncontrolledForm}>
+            + Uncontrolled Form
+          </button>
+
+          <button className={styles.addBtn} onClick={openRHFForm}>
+            + RHF Form
           </button>
         </div>
 
@@ -169,11 +190,12 @@ function Home() {
       </div>
 
       {/* MODAL */}
-      <Modal
-        open={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-      >
-        <Form onClose={() => setIsModalOpen(false)} />
+      <Modal open={isModalOpen} onClose={closeModal}>
+        {formType === "uncontrolled" ? (
+          <Form onClose={closeModal} />
+        ) : (
+          <RHFForm onClose={closeModal} />
+        )}
       </Modal>
     </div>
   );

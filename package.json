@@ -18,6 +18,7 @@
     "react-dom": "^19.2.6",
     "react-hook-form": "^7.78.0",
     "react-router-dom": "^7.15.0",
+    "react-window": "^1.8.11",
     "yup": "^1.7.1",
     "zustand": "^5.0.13"
   },
@@ -32,6 +33,7 @@
     "@types/node": "^24.13.1",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
+    "@types/react-window": "^1.8.8",
     "@vitejs/plugin-react": "^6.0.1",
     "babel-jest": "^30.4.1",
     "identity-obj-proxy": "^3.0.0",

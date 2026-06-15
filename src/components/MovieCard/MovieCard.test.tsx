@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render,screen } from "@testing-library/react";
 import MovieCard from "./MovieCard";
 import { MemoryRouter } from "react-router-dom";
 import type { Movie } from "../../types/movie";
@@ -7,10 +7,7 @@ jest.mock("react-router-dom", () => {
   const actual = jest.requireActual("react-router-dom");
   return {
     ...actual,
-    useSearchParams: () => [
-      new URLSearchParams(),
-      jest.fn(),
-    ],
+    useSearchParams: () => [new URLSearchParams(), jest.fn()],
   };
 });
 

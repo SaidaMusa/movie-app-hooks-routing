@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import { useFormsStore } from "../../store/useFormsStore";
+import { imageToBase64 } from "../../utils/imageToBase64";
 
 type Props = {
   onClose: () => void;
@@ -17,23 +18,28 @@ function Form({ onClose }: Props) {
 
   const [error, setError] = useState<string>("");
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+
+    let image = "";
+
+    const file = imageRef.current?.files?.[0];
+    if (file) {
+      image = await imageToBase64(file);
+    }
 
     const name = nameRef.current?.value.trim() || "";
     const age = Number(ageRef.current?.value);
     const email = emailRef.current?.value.trim() || "";
     const gender = genderRef.current?.value || "";
     const country = countryRef.current?.value.trim() || "";
-    const image = imageRef.current?.value.trim();
 
-    // ❌ VALIDATION
     if (!name || !email || !gender || !country) {
       setError("All fields except image are required");
       return;
     }
 
-    if (age < 1 || age > 120 || isNaN(age)) {
+    if (isNaN(age) || age < 1 || age > 120) {
       setError("Age must be between 1 and 120");
       return;
     }
@@ -44,7 +50,7 @@ function Form({ onClose }: Props) {
       return;
     }
 
-    const newSubmission = {
+    addSubmission({
       id: Date.now().toString(),
       name,
       age,
@@ -52,12 +58,10 @@ function Form({ onClose }: Props) {
       gender,
       country,
       image: image || "https://via.placeholder.com/100",
+      password: "", // ✅ FormSubmission talab qilgan field
       createdAt: Date.now(),
-    };
+    });
 
-    addSubmission(newSubmission);
-
-    // reset
     if (nameRef.current) nameRef.current.value = "";
     if (ageRef.current) ageRef.current.value = "";
     if (emailRef.current) emailRef.current.value = "";
@@ -85,8 +89,16 @@ function Form({ onClose }: Props) {
         <option value="female">Female</option>
       </select>
 
-      <input ref={countryRef} placeholder="Country" />
-      <input ref={imageRef} placeholder="Image URL (optional)" />
+      <input list="countries" ref={countryRef} placeholder="Country" />
+      <datalist id="countries">
+        <option value="Uzbekistan" />
+        <option value="Kazakhstan" />
+        <option value="Kyrgyzstan" />
+        <option value="Russia" />
+        <option value="USA" />
+      </datalist>
+
+      <input ref={imageRef} type="file" accept="image/*" />
 
       <button type="submit">Submit</button>
     </form>

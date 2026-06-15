@@ -11,6 +11,9 @@
 }
 
 .card {
+  width: 100%;
+  height: 100%;
+
   position: relative;
 
   background: var(--card);
@@ -25,8 +28,6 @@
 
   transition: all 0.25s ease;
 
-  height: 100%;
-
   display: flex;
   flex-direction: column;
 }
@@ -38,12 +39,14 @@
 
 .image {
   width: 100%;
-  height: 340px;
+  height: 160px;
 
   object-fit: cover;
   display: block;
 
   transition: transform 0.3s ease;
+
+  flex-shrink: 0;
 }
 
 .card:hover .image {
@@ -52,7 +55,6 @@
 
 .checkbox {
   position: absolute;
-
   top: 12px;
   left: 12px;
 
@@ -62,10 +64,7 @@
   z-index: 20;
 
   accent-color: #4f46e5;
-
   cursor: pointer;
-
-  transform: scale(1.1);
 }
 
 .content {
@@ -81,11 +80,10 @@
 .title {
   font-size: 16px;
   font-weight: 700;
-
   line-height: 1.4;
 
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+   line-clamp: 2;
   -webkit-box-orient: vertical;
 
   overflow: hidden;
